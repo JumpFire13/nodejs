@@ -1,18 +1,20 @@
 {
   "name": "lesson1",
   "version": "1.0.0",
-  "description": "",
+  "description": "NodeJS lesson 1",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+   "nodejs",
+   "lesson"
+  ],
+  "author": "Anton Semenov",
   "license": "ISC",
   "dependencies": {
     "beepbeep": "^1.2.0",
-    "colors": "^1.1.2",
-    "text-to-speech-js": "^1.1.2"
+    "colors": "^1.1.2"
   }
 }
