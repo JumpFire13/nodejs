@@ -1,18 +1,18 @@
 {
-  "name": "lesson2",
+  "name": "lesson2.1",
   "version": "1.0.0",
-  "description": "NodeJS lesson 2.1",
+  "description": "Node.JS lesson 2.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "NodeJS",
+    "Node.JS",
     "lesson"
   ],
   "author": "Anton Semenov",
   "license": "ISC",
   "dependencies": {
-    "random-js": "^1.0.8"
+    "underscore": "^1.8.3"
   }
 }
