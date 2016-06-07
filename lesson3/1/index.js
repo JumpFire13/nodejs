@@ -10,7 +10,7 @@ request('https://geekbrains.ru/posts', function (error, responce, html) {
     var $ = cheerio.load(html);
     var title = $('a.post-item__title').map(function(ind, elem){return $(elem).text()});
     console.log('Список новых статей на GeekBrains:\n');
-    title.forEach(function(item, i, arr) {
-        console.log(item);
-    });
+    for (var i=0; i < title.length; i++) {
+        console.log(title[i]);
+    }
 });
