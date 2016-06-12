@@ -11,17 +11,21 @@ app.engine('hbs', template);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
-app.use( bodyParser.urlencoded() );
+app.use(bodyParser.urlencoded());
 
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 
 app.use(cookieParser());
+
+app.use(express.static(__dirname + '/js'));
 
 app.get('/', function (req, res) {
     if (req.cookies.count) {var count = req.cookies.count}
     else {var count = req.query.count}  // Проверяем есть ли cookie, если нет берем значение из GET параметров
-    res.send('<h1>Новые статьи на GeekBrains</h1>' + getForm(count));
-
+    res.render('index', {
+        form: getForm(count),
+        script: '<script src="script.js"></script>'
+    });
 });
 
 app.post('/', function (req, res) {
@@ -51,8 +55,9 @@ app.post('/', function (req, res) {
 var getForm = function (count) {
         return '<form action="/" method="post">'+
         '<p><b>Сколько новых статей показать (1-30):</b><br>'+
-        '<input type="range" name="count" min="1" max="30" step="1" value="'+ (count || '1') +'"><br>'+
-        '<input type="submit" />'+
+        '<input type="range" name="count" id="r1" oninput="showCount()" min="1" max="30" step="1" value="'+ (count || '1') +'">'+
+        '<span id="one">'+ (count || '1') +'</span><br>'+
+        '<input type="submit" value="Показать" />'+
         '</form>';
 };
 
