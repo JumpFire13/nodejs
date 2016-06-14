@@ -15,8 +15,9 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     if (req.query.del) {
-        todo.delete(req.query.del);
-        res.redirect('/');
+        todo.delete(req.query.del, function () {
+            res.redirect('/');  
+        });
     } else {
         todo.list(function (rows) {
             res.render('index', {

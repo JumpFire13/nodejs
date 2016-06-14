@@ -40,7 +40,8 @@ var todoList = {
         connect.deleteTask(id, function (err) {
             if (err)
                 throw err;
-        })
+        });
+        callback();
     }
 };
 
