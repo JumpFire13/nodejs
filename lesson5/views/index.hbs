@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ДЗ № 5</title>
+</head>
+<body>
+  <h1>Домашнее задание № 5</h1>
+  <table border=1 align="center">
+  <caption>Список задач</caption>
+      <tr>
+      <th>ID</th>
+      <th>TEXT</th>
+      <th>COMPLETED</th>
+      <th>DELETE</th>
+      </tr>
+      {{#each table}}
+      <tr>
+      <td>{{id}}</td>
+      <td>{{text}}</td>
+      <td>{{completed}}</td>
+      <td><a href='?del={{id}}'>X</a></td>
+      </tr>
+    {{/each}}
+  </table>
+  <form action="/" method="post">
+  <p>Добавить новую задачу:</p>
+  <input type="text" name="add">
+  <input type="submit" value="Добавить" />
+  </form>
+</body>
+</html>
