@@ -15,23 +15,21 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     if (req.query.del) {
-       todo.delete(req.query.del)}
-    todo.list(function (rows) {
-        res.render('index', {
-            table: rows
+        todo.delete(req.query.del);
+        res.redirect('/');
+    } else {
+        todo.list(function (rows) {
+            res.render('index', {
+                table: rows
+            });
         });
-    });
+    }
 });
 
 app.post('/', function (req, res) {
     if (req.body.add) {
     todo.add(req.body.add)}
-    // код ниже почему-то не срабатывает!!!
-    todo.list(function (rows) {
-        res.render('index', {
-            table: rows
-        });
-    });
+    res.redirect('/');
 });
 
 app.use(function (req, res){
