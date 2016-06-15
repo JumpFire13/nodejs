@@ -1,13 +1,6 @@
 // Использование пула соединений
 var mysql = require('mysql');
-
-// Настройка пула соединения
-var connectionPool = mysql.createPool({
-    host: 'localhost',
-    database: 'todo',
-    user: 'root',
-    pass: ''
-});
+var connectionPool = require('./config');
 
 // Внешний метод для использования
 function getTasks(callback) {
@@ -38,6 +31,15 @@ function updateTask(id, newText, callback) {
         connection.release();
     });
 }
+function priorTask(id, callback) {
+    connectionPool.getConnection(function (err, connection) {
+        if (err)
+            throw err;
+
+        connection.query('update todos set priority="high" where id=?;', [id], callback);
+        connection.release();
+    });
+}
 function completeTask(id, callback) {
     connectionPool.getConnection(function (err, connection) {
         if (err)
@@ -62,4 +64,5 @@ module.exports.getTasks = getTasks;
 module.exports.addTask = addTask;
 module.exports.updateTask = updateTask;
 module.exports.completeTask = completeTask;
+module.exports.priorTask = priorTask;
 module.exports.deleteTask = deleteTask;

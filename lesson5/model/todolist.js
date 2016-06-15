@@ -16,7 +16,8 @@ var todoList = {
         connect.addTask(text, function (err) {
             if (err)
                 throw err;
-        })
+        });
+        callback();
     },
 
     // Изменить описание задачи
@@ -24,7 +25,17 @@ var todoList = {
         connect.updateTask(id, newText, function (err) {
             if (err)
                 throw err;
-        })
+        });
+        callback();
+    },
+
+    // Изменить приоритет задачи
+    prior: function (id, callback) {
+        connect.priorTask(id, function (err) {
+            if (err)
+                throw err;
+        });
+        callback();
     },
 
     // Отметить задачу как сделанную
@@ -32,7 +43,8 @@ var todoList = {
         connect.completeTask(id, function (err) {
             if (err)
                 throw err;
-        })
+        });
+        callback();
     },
 
     // Удаление задачи

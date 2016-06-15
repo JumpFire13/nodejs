@@ -18,6 +18,14 @@ app.get('/', function (req, res) {
         todo.delete(req.query.del, function () {
             res.redirect('/');  
         });
+    } else if (req.query.comp) {
+        todo.complete(req.query.comp, function () {
+            res.redirect('/');
+        });
+    } else if (req.query.prior) {
+        todo.prior(req.query.prior, function () {
+            res.redirect('/');
+        });
     } else {
         todo.list(function (rows) {
             res.render('index', {
@@ -29,8 +37,14 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     if (req.body.add) {
-    todo.add(req.body.add)}
-    res.redirect('/');
+        todo.add(req.body.add, function () {
+            res.redirect('/');
+        });
+    } else if (req.body.nameTask) {
+        todo.change(req.body.btn, req.body.nameTask, function () {
+            res.redirect('/');
+        });
+    }
 });
 
 app.use(function (req, res){

@@ -5,28 +5,41 @@
     <title>ДЗ № 5</title>
 </head>
 <body>
-  <h1>Домашнее задание № 5</h1>
-  <table border=1>
-  <caption>Список задач</caption>
-      <tr align="center">
-      <th>ID</th>
-      <th>TEXT</th>
-      <th>COMPLETED</th>
-      <th>DELETE</th>
-      </tr>
-      {{#each table}}
-      <tr align="center">
-      <td>{{id}}</td>
-      <td>{{text}}</td>
-      <td>{{completed}}</td>
-      <td><a href='?del={{id}}'>X</a></td>
-      </tr>
+<h1>Домашнее задание № 5</h1>
+<table border=1>
+    <caption><h3>Список задач</h3></caption>
+    <tr align="center">
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>COMPLETED</th>
+        <th>PRIORITY</th>
+    </tr>
+    {{#each table}}
+    <tr align="center">
+        <td>{{id}}</td>
+        <td><form action="/" id="{{id}}" method="post"><input type="text" value="{{text}}" size="50" name="nameTask"></form></td>
+        <td>{{completed}}</td>
+        <td>{{priority}}</td>
+        <td>
+            <button type="submit" form="{{id}}" name="btn" value="{{id}}">Изменить</button>
+        </td>
+        <td>
+            <button onclick="location.href = '?prior={{id}}'">Приоритет</button>
+        </td>
+        <td>
+            <button onclick="location.href = '?comp={{id}}'">Выполнить</button>
+        </td>
+
+        <td>
+            <button onclick="location.href = '?del={{id}}'">Удалить</button>
+        </td>
+    </tr>
     {{/each}}
-  </table>
-  <form action="/" method="post">
-  <p>Добавить новую задачу:</p>
-  <input type="text" name="add">
-  <input type="submit" value="Добавить" />
-  </form>
+</table>
+<form action="/" method="post">
+    <p>Добавить новую задачу:</p>
+    <input type="text" name="add">
+    <input type="submit" value="Добавить"/>
+</form>
 </body>
 </html>
