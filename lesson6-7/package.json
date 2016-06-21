@@ -1,0 +1,26 @@
+{
+  "name": "lesson6-7",
+  "version": "1.0.0",
+  "description": "NodeJS lesson 6-7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJS",
+    "lesson"
+  ],
+  "author": "Anton Semenov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "consolidate": "^0.14.1",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
+    "express": "^4.13.4",
+    "handlebars": "^4.0.5",
+    "mysql": "^2.11.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}

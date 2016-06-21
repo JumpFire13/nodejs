@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ДЗ № 6-7</title>
+</head>
+<body>
+<h1>Домашнее задание № 6-7</h1>
+<table border=1>
+    <caption><h3>Список задач пользователя {{user}}</h3></caption>
+    <tr align="center">
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>COMPLETED</th>
+        <th>PRIORITY</th>
+    </tr>
+    {{#each table}}
+    <tr align="center">
+        <td>{{id}}</td>
+        <td><form action="/name" id="{{id}}" method="post"><input type="text" value="{{text}}" size="50" name="nameTask"></form></td>
+        <td>{{completed}}</td>
+        <td>{{priority}}</td>
+        <td>
+            <button type="submit" form="{{id}}" name="btn" value="{{id}}">Изменить</button>
+        </td>
+        <td>
+            <button onclick="location.href = 'prior/{{id}}'">Приоритет</button>
+        </td>
+        <td>
+            <button onclick="location.href = 'comp/{{id}}'">Выполнить</button>
+        </td>
+
+        <td>
+            <button onclick="location.href = 'del/{{id}}'">Удалить</button>
+        </td>
+    </tr>
+    {{/each}}
+</table>
+<form action="/add" method="post">
+    <p>Добавить новую задачу:</p>
+    <input type="text" name="add">
+    <input type="submit" value="Добавить"/>
+</form>
+<a href="logout">Выход</a>
+</body>
+</html>
